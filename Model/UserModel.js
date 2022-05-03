@@ -4,11 +4,11 @@ const path = require('path');
 const usersJSON = path.join('users.json');
 
 module.exports = {
-  criar ({ nome, email, senha }) {
+  criar ({ nome, sobrenome,  email, senha }) {
     if (!nome || !email || !senha) return
 
     const usuariosCadastrados = JSON.parse(fs.readFileSync(usersJSON));
-    usuariosCadastrados.push({ nome, email, senha });
+    usuariosCadastrados.push({ nome, sobrenome, email, senha });
     return fs.writeFileSync(usersJSON, JSON.stringify(usuariosCadastrados));
   },
 

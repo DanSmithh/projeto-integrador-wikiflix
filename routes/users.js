@@ -36,5 +36,7 @@ router.post('/cadastrar',[
 router.get('/login', UserController.login);
 router.post('/login',validatorCadastro , UserController.autenticar);
 
+router.get('/editar', UserController.editar)
+
 
 module.exports = router;

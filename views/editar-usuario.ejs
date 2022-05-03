@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wikiflix</title>
+    <link rel="shortcut icon" href="/images/icon-favicon.png" type="image/x-icon" />
+    <!--boxIcons-->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+    <!-- css custom -->
+      <link rel="stylesheet" href="/stylesheets/perfil.css"/>
+
+  </head>
+  <body>
+    <!--------------SCROLL TOP------------------------>
+    <a href="#" class="scrolltop" id="scroll-top">
+      <i class="bx bx-chevrons-up scroll__top__icon"></i>
+    </a>
+
+    <!--------------HEADER------------------------>
+    <header class="header" id="header">
+      <!-- NAV -->
+      <nav class="nav bd-container">
+        <a href="#" class="logo"><img src="/images/logo-header.png" width="140px" alt="" /></a>
+
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="/catalog" class="nav__link">Inicío</a></li>
+            <li class="nav__item"><input type="text" placeholder="Pesquise Aqui" /></li>
+            <li class="nav__item"><a href="/users/editar" class="btn">Perfil</a></li>
+            <li class="nav__item"><a href="/index" class="btn-exit">Sair</a></li>
+          </ul>
+        </div>
+
+        <!--MENU TOGGLE-->
+        <div class="nav__toggle">
+          <i class="bx bx-menu" style="color: #e8a330" id="nav-toggle"></i>
+        </div>
+        <!-- END MENU TOGGLE -->
+      </nav>
+      <!-- END NAV -->
+    </header>
+
+        <!--MENU TOGGLE-->
+        <div class="nav__toggle">
+          <i class="bx bx-menu" style="color: #e8a330" id="nav-toggle"></i>
+        </div>
+        <!-- END MENU TOGGLE -->
+      </nav>
+      <!-- END NAV -->
+    </header>
+    <!-- END HEADER -->
+  
+  <!-- MAIN -->
+  <main>
+    
+    <div class="main-login">
+      <div class="left-login">
+        <img src="/images/profile-pic-animate.svg" class="left-login-img" alt="imagem perfil">
+        <h2> Edite seu perfil <span> Wikiflix</span></h2>
+
+      </div>
+      <div class="right-login">
+        <div class="card-login">
+          <% if (erros) { %>
+            <ul class="erros">
+              <% erros.forEach(erro => { %>
+                <li><%= erro.msg %></li>
+              <% }) %>
+            </ul>
+          <% } %>
+          <form class="form" action="/users/editar/<%=  %> " method="POST" >
+
+            <div class="textfield">
+              <label for="nome">Nome</label>
+              <input type="text" name="nome" placeholder="nome" />
+            </div>
+            <div class="textfield">
+              <label for="sobrenome">Sobrenome</label>
+              <input type="text" name="sobrenome" placeholder="sobrenome" />
+            </div>
+          <div class="textfield">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="Email" />
+          </div>
+          <div class="textfield">
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" placeholder="senha" />
+          </div>
+          <div class="textfield">
+            <label for="confime-senha">Confirme a Senha</label>
+            <input type="password" name="confime-senha" placeholder="Confime asenha" />
+          </div>
+
+
+            <button type="submit" class="btn-modal">enviar</button>
+          </form>
+
+  </main>
+  <%- include('./partials/footer') %>
+  
+    <!-- js -->
+    <script src="/javascripts/mainLogin.js">

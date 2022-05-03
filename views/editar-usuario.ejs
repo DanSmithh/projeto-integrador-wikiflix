@@ -9,7 +9,7 @@
     <!--boxIcons-->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
     <!-- css custom -->
-      <link rel="stylesheet" href="/stylesheets/login.css"/>
+      <link rel="stylesheet" href="/stylesheets/perfil.css"/>
 
   </head>
   <body>
@@ -45,14 +45,15 @@
   
   <!-- MAIN -->
   <main>
+    
     <div class="main-login">
       <div class="left-login">
-        <h1>Faça login <br />E entre para <span> Wikiflix</span></h1>
-        <img src="/images/animation-cine.svg" class="left-login-img" alt="" />
+        <img src="/images/profile-pic-animate.svg" class="left-login-img" alt="imagem perfil">
+        <h2> Edite seu perfil <span> Wikiflix</span></h2>
+
       </div>
       <div class="right-login">
         <div class="card-login">
-          <h1>LOGIN</h1>
           <% if (erros) { %>
             <ul class="erros">
               <% erros.forEach(erro => { %>
@@ -60,7 +61,16 @@
               <% }) %>
             </ul>
           <% } %>
-          <form action="/users/login" method="POST" >
+          <form class="form" action="/users/editar/<%=  %> " method="POST" >
+
+            <div class="textfield">
+              <label for="nome">Nome</label>
+              <input type="text" name="nome" placeholder="nome" />
+            </div>
+            <div class="textfield">
+              <label for="sobrenome">Sobrenome</label>
+              <input type="text" name="sobrenome" placeholder="sobrenome" />
+            </div>
           <div class="textfield">
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Email" />
@@ -68,63 +78,18 @@
           <div class="textfield">
             <label for="senha">Senha</label>
             <input type="password" name="senha" placeholder="senha" />
-            </div>
-            <!-- Link de recuperar a senha -->
+          </div>
+          <div class="textfield">
+            <label for="confime-senha">Confirme a Senha</label>
+            <input type="password" name="confime-senha" placeholder="Confime asenha" />
+          </div>
 
-            <a class="forgot-password">
-              Esqueci a Senha
-            </a>
 
-            <a class="signUp">
-              Cadastre-se
-            </a>
             <button type="submit" class="btn-modal">enviar</button>
           </form>
 
-    <!-- MODAL FORGOT -->
-    <div id="modal-forgot" class="modal-container">
-      <div class="modal">
-        <button class="close">x</button>
-        <h2>Insira seu endereço de e-mail</h2>
-        <h4>Para recuperar sua senha, precisamos do endereço de e-mail vinculado à sua conta.</h4>
-        <form action="">
-          <input type="text" class="modal-input" placeholder="Digite seu Email">
-          <button class="btn-modal">Recuperar Senha</button>
-          <!-- <input type="button" class="btn-modal" value="Recuperar Senha"> -->
-        </form>
-      </div>
-    </div>
-  
-  <!-- MODAL SIGN UP -->
-  
-    <div id="modal-signUp" class="modal-container">
-      <div class="modal">
-        <form action="/users/cadastrar" enctype="multipart/form-data" method="POST" >
-          <h2>Cadastre-se!</h2>
-          <%=  %> 
-          <button class="close">x</button>
-          <div>
-            <input type="text" name="nome" id="nome" placeholder="Nome " class="modal-input-signUp">
-            <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" class="modal-input-signUp">
-            <input type="email" name="email" id="email" placeholder="Email" class="modal-input-signUp">
-            <input type="password" name="senha" id="senha" placeholder="Crie uma senha" class="modal-input-signUp">
-            <input type="password" name="confirmeSenha" id="confirmeSenha" placeholder="Confirme a senha" class="modal-input-signUp">
-            <input type="file" id="arquivo" name="arquivo" value="arquivo"> 
-            <label for="arquivo"> Insira imagem desejada.</label> 
-          </div>
-          <button type="submit" class="btn-modal">enviar</button>
-  
-  
-        </form>
-    </div>
-    </div>
   </main>
   <%- include('./partials/footer') %>
   
     <!-- js -->
     <script src="/javascripts/mainLogin.js">
-  
-  
-  
-  
-    </script>

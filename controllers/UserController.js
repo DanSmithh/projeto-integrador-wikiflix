@@ -5,7 +5,7 @@ const { validationResult } = require('express-validator');
 
 module.exports = {
   editar (req, res) {
-    return res.render('cadastro-usuario', { erros: null, user: null })
+    return res.render('editar-usuario', { erros: null, user: null })
   },
 
   create (req, res) {
@@ -51,6 +51,8 @@ module.exports = {
 
     req.session.usuario = user;
 
-    return res.redirect('/catalog');
+    console.log(user)
+
+    return res.render('catalog', {  user });
   }
 }

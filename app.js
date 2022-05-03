@@ -6,10 +6,10 @@ var logger = require('morgan');
 var methodOverride = require('method-override');
 var session = require('express-session');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var catalogRouter = require('./routes/catalog');
-var aboutRouter = require('./routes/about');
+var indexRouter = require('./src/routes/index');
+var usersRouter = require('./src/routes/users');
+var catalogRouter = require('./src/routes/catalog');
+var aboutRouter = require('./src/routes/about');
 
 var app = express();
 
@@ -19,7 +19,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }))
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
 app.use(methodOverride('_method'));
@@ -27,7 +27,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

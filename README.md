@@ -36,4 +36,3 @@ Para que a aplicação funcione em seu computador é necessário instalar o Node
 1. Abra seu navegador e na barra de endereços digite: `http://localhost:3000`.
 
 ---
-Desenvolvido por [Dan Smith](https://gist.github.com/dansmithh) 😊

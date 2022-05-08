@@ -41,28 +41,18 @@
       </nav>
       <!-- END NAV -->
     </header>
-
-        <!--MENU TOGGLE-->
-        <div class="nav__toggle">
-          <i class="bx bx-menu" style="color: #e8a330" id="nav-toggle"></i>
-        </div>
-        <!-- END MENU TOGGLE -->
-      </nav>
-      <!-- END NAV -->
-    </header>
-    <!-- END HEADER -->
   
   <!-- MAIN -->
   <main>
     
-    <div class="main-login">
-      <div class="left-login">
-        <img src="/images/profile-pic-animate.svg" class="left-login-img" alt="imagem perfil">
+    <div class="main-edit">
+      <div class="left-edit">
+        <img src="/images/profile-pic-animate.svg" class="left-edit-img" alt="imagem perfil">
         <h2> Edite seu perfil <span> Wikiflix</span></h2>
 
       </div>
-      <div class="right-login">
-        <div class="card-login">
+      <div class="right-edit">
+        <div class="card-edit">
           <% if (erros) { %>
             <ul class="erros">
               <% erros.forEach(erro => { %>
@@ -70,32 +60,46 @@
               <% }) %>
             </ul>
           <% } %>
-          <form class="form" action="/users/editar/<%=  %> " method="POST" >
+          <form class="form" action="/users/editar/<%= usuario.id_hash %>?_method=PUT" method="POST" >
 
             <div class="textfield">
-              <label for="nome">Nome</label>
-              <input type="text" name="nome" placeholder="nome" />
+              <label for="nome">Nome </label>
+              <input type="text" name="nome" value="<%= usuario.nome %>" />
             </div>
             <div class="textfield">
               <label for="sobrenome">Sobrenome</label>
-              <input type="text" name="sobrenome" placeholder="sobrenome" />
+              <input type="text" name="sobrenome" value="<%= usuario.sobrenome %>" />
             </div>
           <div class="textfield">
             <label for="email">Email</label>
-            <input type="email" name="email" placeholder="Email" />
+            <input type="email" name="email" value="<%= usuario.email %>" />
           </div>
           <div class="textfield">
             <label for="senha">Senha</label>
-            <input type="password" name="senha" placeholder="senha" />
+            <input type="password" name="senha" placeholder="Digite sua nova senha" />
           </div>
           <div class="textfield">
             <label for="confime-senha">Confirme a Senha</label>
-            <input type="password" name="confime-senha" placeholder="Confime asenha" />
+            <input type="password" name="confimeSenha" placeholder="Confime sua nova senha" />
           </div>
 
 
-            <button type="submit" class="btn-modal">enviar</button>
+
+            <div class="buttons">
+              <a href="/users/back/<%= usuario.id_hash %>" class="btn-modal">Voltar</a>
+              <button type="submit" class="btn-modal">enviar</button>
+            </div>
+
           </form>
+
+
+          <!-- <article class="delete">
+            <a href="/users/delete">Desativar conta</a>
+          </article> -->
+
+          <form class="delete" action="/users/deletar/<%= usuario.id_hash %>?_method=DELETE" method="POST">
+            <button type="submit" class="delete">Desativar conta</button>
+
 
   </main>
   <%- include('./partials/footer') %>

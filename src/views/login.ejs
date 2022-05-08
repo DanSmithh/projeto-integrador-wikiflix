@@ -53,6 +53,7 @@
       <div class="right-login">
         <div class="card-login">
           <h1>LOGIN</h1>
+
           <% if (erros) { %>
             <ul class="erros">
               <% erros.forEach(erro => { %>
@@ -60,6 +61,8 @@
               <% }) %>
             </ul>
           <% } %>
+
+
           <form action="/users/login" method="POST" >
           <div class="textfield">
             <label for="email">Email</label>
@@ -70,21 +73,24 @@
             <input type="password" name="senha" placeholder="senha" />
             </div>
             <!-- Link de recuperar a senha -->
+  
+              <a class="forgot-password">
+                Esqueci a Senha
+              </a>
+  
+              <a class="signUp">
+                Cadastre-se
+              </a>
 
-            <a class="forgot-password">
-              Esqueci a Senha
-            </a>
 
-            <a class="signUp">
-              Cadastre-se
-            </a>
+
             <button type="submit" class="btn-modal">enviar</button>
           </form>
 
     <!-- MODAL FORGOT -->
     <div id="modal-forgot" class="modal-container">
       <div class="modal">
-        <button class="close">x</button>
+        <a class="close">x</a>
         <h2>Insira seu endereço de e-mail</h2>
         <h4>Para recuperar sua senha, precisamos do endereço de e-mail vinculado à sua conta.</h4>
         <form action="">
@@ -101,14 +107,14 @@
       <div class="modal">
         <form action="/users/cadastrar" enctype="multipart/form-data" method="POST" >
           <h2>Cadastre-se!</h2>
-          <%=  %> 
-          <button class="close">x</button>
+
+          <a class="close">x</a>
           <div>
-            <input type="text" name="nome" id="nome" placeholder="Nome " class="modal-input-signUp">
-            <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" class="modal-input-signUp">
-            <input type="email" name="email" id="email" placeholder="Email" class="modal-input-signUp">
-            <input type="password" name="senha" id="senha" placeholder="Crie uma senha" class="modal-input-signUp">
-            <input type="password" name="confirmeSenha" id="confirmeSenha" placeholder="Confirme a senha" class="modal-input-signUp">
+            <input type="text" name="nome" id="nome" placeholder="Nome " class="modal-input-signUp" required>
+            <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" class="modal-input-signUp" required>
+            <input type="email" name="email" id="email" placeholder="Email" class="modal-input-signUp" required>
+            <input type="password" name="senha" id="senha" placeholder="Crie uma senha" class="modal-input-signUp" required>
+            <input type="password" name="confirmeSenha" id="confirmeSenha" placeholder="Confirme a senha" class="modal-input-signUp" required>
             <input type="file" id="arquivo" name="arquivo" value="arquivo"> 
             <label for="arquivo"> Insira imagem desejada.</label> 
           </div>

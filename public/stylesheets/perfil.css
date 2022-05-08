@@ -255,11 +255,11 @@ img {
   bottom: 1rem;
 }
 
-/* FORM LOGIN */
+/* FORM EDIT */
 
-.main-login {
-  width: 100vw;
-  height: 58vw;
+.main-edit {
+  width: 100%;
+
   background: var(--dark-color);
   display: flex;
   justify-content: center;
@@ -268,7 +268,7 @@ img {
   padding-bottom: 6vh;
 }
 
-.left-login {
+.left-edit {
   width: 50vw;
   height: 15vw;
   display: flex;
@@ -277,20 +277,19 @@ img {
   flex-direction: row;
 }
 
-.left-login > h2 {
+.left-edit > h2 {
   font-family: 3vw;
   color: var(--first-color);
 }
 
-.right-login {
+.right-edit {
   width: 65vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.card-login {
+.card-edit {
   width: 70%;
   display: flex;
   justify-content: center;
@@ -301,7 +300,7 @@ img {
   box-shadow: 0px 10px 40px #00000056;
 }
 
-.card-login > h2 {
+.card-edit > h2 {
   color: var(--dark-color);
   font-weight: 800;
   margin: 0;
@@ -320,7 +319,7 @@ img {
   border-radius: 10px;
   padding: 15px;
   background: var(--first-color_alt_light);
-  color: #f0ffffde;
+  color: #000;
   font-size: 12pt;
   box-shadow: 0px 10px 40px #00000056;
   outline: none;
@@ -336,7 +335,7 @@ img {
   color: var(--text-color);
 }
 
-.btn-login {
+.btn-edit {
   width: 100%;
   padding: 16px 0px;
   border: none;
@@ -352,45 +351,25 @@ img {
   box-shadow: 0px 10px 40px -12px #00ff8052;
 }
 
-.left-login-img {
+.left-edit-img {
   width: 25%;
 }
 
+
+
 .form {
-  width: 35vw;
+  width: 75%;
 }
 
-/* MODAL */
-
-/* .modal-container {
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 2000;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal {
-  background: white;
-  width: 50%;
-  min-width: 18.75rem;
-  padding: 40px;
+.buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 30px 35px;
-  background: var(--first-color_alt);
-  border-radius: 20px;
-  box-shadow: 0px 10px 40px #00000056;
-  position: relative;
-  text-align: center;
-} */
+  flex-direction: row;
+}
+
+.delete a {
+  text-decoration: none;
+  color:#000;
+}
 
 @keyframes modal {
   from {
@@ -476,12 +455,13 @@ img {
 }
 
 .btn-modal {
-  width: 50%;
+  width: 45%;
   padding: 16px 0px;
-  margin: 26px 0px;
+  margin: 26px;
   border: none;
   border-radius: 8px;
   outline: none;
+  text-align: center;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 3px;
@@ -491,34 +471,34 @@ img {
   box-shadow: 0px 10px 40px -12px #00ff8052;
 }
 
-@media only screen and (max-width: 950px) {
-  .card-login {
-    width: 85%;
-  }
-}
+
+/*-------MEDIA QUERY------*/
 
 @media only screen and (max-width: 600px) {
-  .main-login {
+  .main-edit {
+    display: flex;
     flex-direction: column;
-    height: 780px;
+    width: 100%;
+    height: auto;
+    
   }
-  .left-login > h1 {
+  .left-edit > h1 {
     display: none;
   }
-  .left-login {
+  .left-edit {
     width: 100%;
     height: auto;
   }
 
-  .right-login {
+  .right-edit {
     width: 100%;
     height: auto;
   }
 
-  .left-login-img {
-    width: 50vh;
-  }
-  .card-login {
+  .left-edit-img {
+    width: 50%;
+}
+  .card-edit {
     width: 90%;
   }
   .modal {
@@ -563,9 +543,9 @@ img {
     align-items: center;
   }
   .btn-modal {
-    width: 70%;
+    width: 60%;
     padding: 16px 0px;
-    margin: 26px 0px;
+    margin: 26px;
     border: none;
     border-radius: 8px;
     outline: none;
@@ -580,31 +560,118 @@ img {
   .modal {
     margin-bottom: 300px;
   }
+
+  .form {
+    width: 75%;
+}
 }
 
-/*-------MEDIA QUERY------*/
 
-@media (max-width: 575.98px) {
-}
-
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .bg-container {
-    padding: 4rem;
+@media only screen and (max-width: 959px) {
+  .main-edit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    
   }
+  .left-edit > h1 {
+    display: none;
+  }
+  .left-edit {
+    width: 100%;
+    height: auto;
+  }
+
+  .right-edit {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-edit-img {
+    width: 50%;
+}
+  .card-edit {
+    width: 90%;
+  }
+  .modal {
+    background: white;
+    width: 50%;
+    min-width: 18.75rem;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: var(--first-color_alt);
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+    position: relative;
+    text-align: center;
+  }
+
+  .modal > h2 {
+    font-size: 1.25rem;
+    font-weight: var(--font-bold);
+    margin: 10px 0px;
+  }
+
+  .modal > h4 {
+    font-size: 1rem;
+    font-weight: var(--font-medium);
+    margin: 10px 0px;
+  }
+
+  .modal-container {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-modal {
+    width: 60%;
+    padding: 16px 0px;
+    margin: 26px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--first-color_alt);
+    background: var(--dark-color);
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+  }
+  .modal {
+    margin-bottom: 300px;
+  }
+
+  .form {
+    width: 75%;
 }
 
-@media (min-width: 768px) and (max-width: 959px) {
-  :root {
-    --big-font-size: 4rem;
-    --h1-font-size: 2.25rem;
-    --h2-font-size: 1.5rem;
-    --h3-font-size: 1.25rem;
-    --normal-font-size: 1rem;
-    --small-font-size: 0.875rem;
+
+
+  .left-edit-img {
+    width: 50%;
+  }
+
+  .form {
+    width: 75%;
   }
 }
 
 @media (min-width: 960px) {
+  
+
   .nav__list {
     display: flex;
     align-items: center;

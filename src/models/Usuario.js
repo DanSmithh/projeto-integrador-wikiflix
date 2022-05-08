@@ -30,13 +30,20 @@ module.exports = (sequelize, dataTypes) => {
     senha: {
     type: dataTypes.STRING,
     allowNull: false
-    },
+    }
     
 
   }, {
-    tableName: 'usuario',
+    tableName: 'usuarios',
     timestamps: false
   });
+
+  Usuario.associate = (models) => {
+    Usuario.hasMany(models.Comentario, {
+      foreignKey: 'usuarios_id',
+      as: 'comentarios'
+    })
+  }
 
   return Usuario;
 }

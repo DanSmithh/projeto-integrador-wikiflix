@@ -1,17 +1,17 @@
 var express = require('express');
 var router = express.Router();
 const multer = require('multer');
-const UserController = require ('../controllers/UserController');
+const UsuariosControllers = require('../controllers/UsuariosControllers');
 const validatorCadastro = require('../middleware/formValidator')
 const { check, validationResult, body } = require('express-validator');
 
 
 const storage = multer.diskStorage({
-  destination (req, file, callback) {
+  destination(req, file, callback) {
     callback(null, 'public/images/uploads');
   },
 
-  filename (req, file, callback) {
+  filename(req, file, callback) {
     const [filename, extension] = file.originalname.split('.');
     callback(null, filename + '-' + Date.now() + '.' + extension);
   }
@@ -19,24 +19,36 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+// Catalogo
+
 // Criação  de Usuarios
-router.post('/cadastrar',[
+router.post('/cadastrar', [
   check('nome')
     .notEmpty().withMessage('Campo nome é obrigatório!').bail()
     .isLength({ min: 3 }).withMessage('Campo nome precisa ter mais que 3 caracteres'),
   check('email')
     .notEmpty().withMessage('Campo email é obrigatório!').bail()
-    .isEmail().withMessage('Campo valor precisa ser um número'),
+    .isEmail(),
   check('senha')
     .notEmpty().withMessage('Campo senha é obrigatório').bail()
     .isLength({ min: 3 }).withMessage('Campo senha precisa ter mais que 3 caracteres!')
-], upload.single('arquivo')  , UserController.create);
+], upload.single('arquivo'), UsuariosControllers.criar);
+
+
 
 // Atentificação
-router.get('/login', UserController.login);
-router.post('/login',validatorCadastro , UserController.autenticar);
+router.get('/login', UsuariosControllers.login);
+router.post('/login', validatorCadastro, UsuariosControllers.autenticar);
 
-router.get('/editar', UserController.editar)
+// Editar usuário
+router.get('/editar/:id_hash', UsuariosControllers.form)
+router.put('/editar/:id_hash', UsuariosControllers.atualizar)
+router.get('/back/:id_hash', UsuariosControllers.sairEdicao)
+
+// Deletar usuário
+router.delete('/deletar/:id_hash', UsuariosControllers.deletar)
+
+
 
 
 module.exports = router;

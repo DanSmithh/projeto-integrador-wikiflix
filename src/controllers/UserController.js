@@ -3,12 +3,13 @@ const UserModel = require('../Models/UserModel');
 const validatorCadastro = require('../middleware/formValidator');
 const { validationResult } = require('express-validator');
 
+
 module.exports = {
-  editar (req, res) {
+  editar(req, res) {
     return res.render('editar-usuario', { erros: null, user: null })
   },
 
-  create (req, res) {
+  create(req, res) {
     console.log(validationResult(req))
     const user = req.body;
     const erros = [];
@@ -18,15 +19,15 @@ module.exports = {
       return res.render('login', { erros, user })
     }
 
-    UserModel.criar({...user, senha: bcrypt.hashSync(user.senha, 12) });
+    UserModel.criar({ ...user, senha: bcrypt.hashSync(user.senha, 12) });
     return res.redirect('/catalog');
   },
 
-  login (req, res) {
+  login(req, res) {
     return res.render('login', { erros: null });
   },
 
-  autenticar (req, res) {
+  autenticar(req, res) {
     const requestUser = req.body;
     const erros = [];
 
@@ -53,6 +54,8 @@ module.exports = {
 
     console.log(user)
 
-    return res.render('catalog', {  user });
-  }
+    return res.render('catalog', { user });
+  },
+
+
 }

@@ -26,8 +26,8 @@ function iniciaModal(modalID) {
   if (modal) {
     modal.classList.add("mostrar");
     modal.addEventListener("click", (e) => {
-      if (e.target.id == modalID || e.target.className == "closer") {
-        modal.classList.a("mostrar");
+      if (e.target.id == modalID || e.target.className == "close") {
+        modal.classList.remove("mostrar");
       }
     });
   }

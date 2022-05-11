@@ -1,12 +1,11 @@
 var express = require('express');
+const moviesControllers = require('../controllers/FilmsControllers')
 
 
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.render('about', { router: 'about'});
-})
+router.get('/', moviesControllers.index)
 
 
 

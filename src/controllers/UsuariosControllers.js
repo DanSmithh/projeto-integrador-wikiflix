@@ -6,14 +6,15 @@ const { v4: uuid_v4 } = require('uuid');
 
 module.exports = {
   login(req, res) {
-    return res.render('login', { erros: null });
+    return res.render('login', { erros: null, sucess: null });
   },
 
   async criar(req, res) {
     try {
-      const { nome, sobrenome, email, senha } = req.body;
+      const { nome, sobrenome, email, senha, confirmeSenha } = req.body;
 
       const erros = [];
+      const sucess = [];
 
       const verificarUsuario = await (Usuario.findOne({
         where: {
@@ -26,12 +27,19 @@ module.exports = {
         return res.render('login', { erros });
       }
 
-      const usuario = await Usuario.create({ nome, sobrenome, email, senha: bcrypt.hashSync(senha, 12), id_hash: uuid_v4() });
-      req.session.usuario = usuario;
+      if (senha === confirmeSenha) {
+        const usuario = await Usuario.create({ nome, sobrenome, email, senha: bcrypt.hashSync(senha, 12), id_hash: uuid_v4() });
 
-      console.log(usuario)
+        console.log(usuario)
 
-      return res.render('catalog', { usuario });
+        sucess.push({ msg: 'Usuário criado com sucesso!' });
+
+        return res.render('login', { erros: null, sucess });
+
+      } else {
+        erros.push({ msg: 'As senhas não conferem!' });
+        return res.render('login', { erros });
+      }
 
     } catch (erro) {
       console.log(erro)
@@ -68,6 +76,7 @@ module.exports = {
         return res.render('login', { erros });
       }
 
+      req.cookies.usuario = usuario;
       req.session.usuario = usuario;
 
       console.log(usuario)
@@ -89,7 +98,11 @@ module.exports = {
         }
       })
 
+      req.cookies.usuario = usuario;
       req.session.usuario = usuario;
+
+
+      res
 
       return res.render('editar-usuario', { erros: null, usuario })
 
@@ -114,6 +127,7 @@ module.exports = {
         }
       })
 
+      req.cookies.usuario = usuario;
       req.session.usuario = usuario;
 
       return res.render('editar-usuario', { erros: null, usuario })
@@ -122,24 +136,24 @@ module.exports = {
     }
   },
 
-  async sairEdicao(req, res) {
-    try {
-      const { id_hash } = req.params
+  // async sairEdicao(req, res) {
+  //   try {
+  //     const { id_hash } = req.params
 
-      const usuario = await Usuario.findOne({
-        where: {
-          id_hash: id_hash
-        }
-      })
+  //     const usuario = await Usuario.findOne({
+  //       where: {
+  //         id_hash: id_hash
+  //       }
+  //     })
 
-      req.session.usuario = usuario;
+  //     req.cookies.usuario = usuario;
 
-      return res.render('catalog', { usuario });
+  //     return res.render('catalog', { usuario });
 
-    } catch (erro) {
-      console.log(erro);
-    }
-  },
+  //   } catch (erro) {
+  //     console.log(erro);
+  //   }
+  // },
 
   async deletar(req, res) {
     try {
@@ -157,4 +171,12 @@ module.exports = {
       console.log(erro);
     }
   },
+
+  logout(req, res) {
+
+    if (req.session) {
+      req.session.destroy();
+    }
+    return res.redirect('/')
+  }
 }

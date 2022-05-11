@@ -43,10 +43,13 @@ router.post('/login', validatorCadastro, UsuariosControllers.autenticar);
 // Editar usuário
 router.get('/editar/:id_hash', UsuariosControllers.form)
 router.put('/editar/:id_hash', UsuariosControllers.atualizar)
-router.get('/back/:id_hash', UsuariosControllers.sairEdicao)
+// router.get('/back/:id_hash', UsuariosControllers.sairEdicao)
 
 // Deletar usuário
 router.delete('/deletar/:id_hash', UsuariosControllers.deletar)
+
+// Deslogar usuário
+router.get('/logout', UsuariosControllers.logout)
 
 
 

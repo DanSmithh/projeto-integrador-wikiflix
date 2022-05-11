@@ -60,7 +60,13 @@
                 <li><%= erro.msg %></li>
               <% }) %>
             </ul>
-          <% } %>
+          <% } else if(sucess) { %>
+            <ul class="erros">
+              <% sucess.forEach(sucess => { %>
+                <li><%= sucess.msg %></li>
+              <% }) %>
+            </ul>
+      <%  } %>
 
 
           <form action="/users/login" method="POST" >

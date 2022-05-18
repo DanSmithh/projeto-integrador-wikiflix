@@ -436,10 +436,12 @@ form {
 
 .forgot-password {
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .signUp {
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .modal > h2 {

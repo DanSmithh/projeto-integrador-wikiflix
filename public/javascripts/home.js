@@ -3,12 +3,12 @@ const main = document.querySelector('.main');
 fetch(genres_list_http + new URLSearchParams({
     api_key: api_key
 }))
-.then(res => res.json())
-.then(data => {
-    data.genres.forEach(item => {
-        fetchMoviesListByGenres(item.id, item.name);
-    })
-});
+    .then(res => res.json())
+    .then(data => {
+        data.genres.forEach(item => {
+            fetchMoviesListByGenres(item.id, item.name);
+        })
+    });
 
 const fetchMoviesListByGenres = (id, genres) => {
     fetch(movie_genres_http + new URLSearchParams({
@@ -16,11 +16,11 @@ const fetchMoviesListByGenres = (id, genres) => {
         with_genres: id,
         page: Math.floor(Math.random() * 3) + 1
     }))
-    .then(res => res.json())
-    .then(data => {
-        makeCategoryElement(`${genres}_movies`, data.results);
-    })
-    .catch(err =>  console.log(err));
+        .then(res => res.json())
+        .then(data => {
+            makeCategoryElement(`${genres}_movies`, data.results);
+        })
+        .catch(err => console.log(err));
 }
 
 const makeCategoryElement = (category, data) => {
@@ -39,9 +39,9 @@ const makeCategoryElement = (category, data) => {
 const makeCards = (id, data) => {
     const movieContainer = document.getElementById(id);
     data.forEach((item, i) => {
-        if(item.backdrop_path == null){
+        if (item.backdrop_path == null) {
             item.backdrop_path = item.poster_path;
-            if(item.backdrop_path == null){
+            if (item.backdrop_path == null) {
                 return;
             }
         }
@@ -53,7 +53,7 @@ const makeCards = (id, data) => {
         </div>
         `;
 
-        if(i == data.length - 1){
+        if (i == data.length - 1) {
             setTimeout(() => {
                 setupScrolling();
             }, 100);

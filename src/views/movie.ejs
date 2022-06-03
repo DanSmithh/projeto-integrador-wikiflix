@@ -7,6 +7,8 @@
     <title>Document</title>
     <!--boxIcons-->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/stylesheets/about.css" />
     <link rel="stylesheet" href="/stylesheets/catalogo.css" />
@@ -66,13 +68,56 @@
         </div> -->
       </div>
     </div>
+
+    <!-- FORM-REVIEW -->
+
+<div class="reviews" id="review-form-container">
+  <h3 class=".heading-about">Comente aqui</h3>
+  <p class="page-description">Preencha o formulário com o comentário sobre o filme</p>
+  <form action="#" id="review-form" method="POST">
+    <input type="hidden" name="type" value="create">
+    <input type="hidden" name="movies_id" value="<?= $movie->id ?>">
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+      <label for="review">Seu comentário:</label>
+      <textarea name="review" id="review" rows="3" class="form-control" placeholder="O que você achou do filme?"></textarea>
+    </div>
+    <button type="submit" class="card-btn">Enviar Review</button>
+  </form>
+</div>
+
+    <!-- REVIEWS -->
+
+    <div class="col-md-12 review">
+      <div class="row">
+        <div class="col-md-1">
+          <div class="profile-image-container review-image" style="background-image: url('../../public/images/user.png')"></div>
+        </div>
+        <div class="col-md-8 author-details-container">
+          <h4 class="author-name">
+            <a href="#">Daniel Oliveira</a>
+          </h4>
+        </div>
+        <p class="comment-title">Comentário:</p>
+        <p>Este é o comentário do usuário</p>
+      </div>
+    </div>
+
+
+
+
+
+
+   
     </main>
+    <%- include('./partials/footer') %>
 
   <script src="/javascripts/api.js"></script>
   <script src="/javascripts/about.js"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-  
-  <%- include('./partials/footer') %>
 
   </body>
 </html>

@@ -75,3 +75,59 @@ iframe{
 .movie:hover p{
   opacity: 1;
 }
+
+/* FORM-REVIEWS */
+
+#review-form-container {
+  background-color: rgb(32, 32, 32);
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 5vw;
+  border-top: solid 4px #f2ad2e;
+}
+
+/* #review-form p {
+  color
+} */
+
+#review-form textarea {
+  width: 50%;
+  margin: 2vw 0;
+}
+
+#review-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 4px  solid #f2ad2e;
+}
+
+.reviews {
+  padding: 5vw 5vw 0;
+  color: #fff;
+}
+
+.card-btn {
+  background: linear-gradient(to right, #f2ad2e 0%, #e79806 100%);
+  border: none;
+  outline: none;
+  box-shadow: 4px 4px 6px rgb(250 216 172 / 30%);
+  padding: 0.5rem 1.5rem;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  letter-spacing: 3px;
+  text-align: center;
+  outline: none;
+  color: var(--light-color);
+  border-radius: 6px;
+  display: inline-block;
+  transition: 0.4s;
+}
+
+/* REVIEW */
+
+.review {
+  color: #fff;
+  padding: 5vw 5vw 0;
+}

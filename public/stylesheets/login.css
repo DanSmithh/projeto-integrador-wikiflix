@@ -313,6 +313,10 @@ form {
   align-items: center;
 }
 
+body > main > div > div.right-login > div > ul > li {
+  text-align: center;
+}
+
 .textfield {
   width: 100%;
   display: flex;

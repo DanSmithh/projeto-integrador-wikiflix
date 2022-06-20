@@ -34,14 +34,14 @@ module.exports = (sequelize, dataTypes) => {
     
 
   }, {
-    tableName: 'usuarios',
-    timestamps: false
+    tableName: 'usuario',
+    timestamps: true
   });
 
   Usuario.associate = (models) => {
-    Usuario.hasMany(models.Comentario, {
-      foreignKey: 'usuarios_id',
-      as: 'comentarios'
+    Usuario.hasMany(models.Review, {
+      foreignKey: 'usuario_id',
+      as: 'reviews'
     })
   }
 

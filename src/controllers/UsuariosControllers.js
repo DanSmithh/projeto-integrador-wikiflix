@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const { Op } = require("sequelize");
-const { Usuario, Comentario } = require('../models');
+const { Usuario, Review } = require('../models');
 const { validationResult } = require('express-validator');
 const { v4: uuid_v4 } = require('uuid');
 
@@ -28,7 +28,13 @@ module.exports = {
       }
 
       if (senha === confirmeSenha) {
-        const usuario = await Usuario.create({ nome, sobrenome, email, senha: bcrypt.hashSync(senha, 12), id_hash: uuid_v4() });
+        const usuario = await Usuario.create({
+           nome,
+           sobrenome,
+           email,
+           senha: bcrypt.hashSync(senha, 12),
+           id_hash: uuid_v4(),
+          });
 
         console.log(usuario)
 
@@ -58,7 +64,7 @@ module.exports = {
       }
 
       const usuario = await Usuario.findOne({
-        attributes: ['id_hash', 'nome', 'sobrenome', 'email', 'senha'],
+        attributes: ['id', 'id_hash', 'nome', 'sobrenome', 'email', 'senha'],
         where: {
           email: requestUser.email
         }
@@ -76,7 +82,6 @@ module.exports = {
         return res.render('login', { erros });
       }
 
-      req.cookies.usuario = usuario;
       req.session.usuario = usuario;
 
       console.log(usuario)
@@ -98,13 +103,9 @@ module.exports = {
         }
       })
 
-      req.cookies.usuario = usuario;
       req.session.usuario = usuario;
 
-
-      res
-
-      return res.render('editar-usuario', { erros: null, usuario })
+      return res.render('editar-usuario', { erros: null, success: null, usuario })
 
     } catch (erro) {
       console.log(erro);
@@ -116,10 +117,8 @@ module.exports = {
     try {
       const { id_hash } = req.params;
       const { nome, sobrenome, email, senha, confirmeSenha } = req.body;
-
-      await Usuario.update({ nome, sobrenome, email }, {
-        where: { id_hash }
-      });
+      const erros = [];
+      const success = [];
 
       const usuario = await Usuario.findOne({
         where: {
@@ -127,33 +126,60 @@ module.exports = {
         }
       })
 
-      req.cookies.usuario = usuario;
       req.session.usuario = usuario;
 
-      return res.render('editar-usuario', { erros: null, usuario })
+      if(senha === confirmeSenha) {
+        await Usuario.update({ nome, sobrenome, email, senha: bcrypt.hashSync(senha, 12) }, {
+          where: { id_hash }
+        })
+
+        success.push({ msg: 'Atualizações realizadas com sucesso!' });
+
+        return res.render('editar-usuario', { erros: null, success , usuario })
+      } 
+      
+      // if (senha === confirmeSenha){
+      //   const usuario = await Usuario.update({ nome, sobrenome, email, senha: bcrypt.hashSync(senha, 12) }, {
+      //     where: { id_hash }
+      //   })
+
+      //   success.push({ msg: 'Atualizações realizadas com sucesso2!' });
+
+      //   return res.render('editar-usuario', { erros: null, success , usuario })
+      // } else {
+      //   erros.push({ msg: 'As senhas não conferem!' });
+      //   return res.render('editar-usuario', { erros, success: null, usuario });
+      // };
+
+
+
     } catch (erro) {
       console.log(erro);
     }
   },
 
-  // async sairEdicao(req, res) {
-  //   try {
-  //     const { id_hash } = req.params
+  async sairEdicao(req, res) {
+    try {
+      const { id_hash } = req.params;
 
-  //     const usuario = await Usuario.findOne({
-  //       where: {
-  //         id_hash: id_hash
-  //       }
-  //     })
+      // const usuario = await Usuario.findOne({
+      //   where: {
+      //     id_hash
+      //   }
+      // })
 
-  //     req.cookies.usuario = usuario;
+      // req.session.usuario = usuario;
 
-  //     return res.render('catalog', { usuario });
+      // console.log(usuario)
 
-  //   } catch (erro) {
-  //     console.log(erro);
-  //   }
-  // },
+      return res.json(id_hash)
+
+      // return res.render('catalog', { usuario });
+
+    } catch (erro) {
+      console.log(erro);
+    }
+  },
 
   async deletar(req, res) {
     try {

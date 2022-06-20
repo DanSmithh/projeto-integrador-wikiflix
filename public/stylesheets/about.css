@@ -78,13 +78,18 @@ iframe{
 
 /* FORM-REVIEWS */
 
+.review-title {
+  color: #fff;
+  padding: 5vw 5vw 0;
+}
+
 #review-form-container {
   background-color: rgb(32, 32, 32);
   padding: 2vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 5vw;
+  margin: 1vw 5vw;
   border-top: solid 4px #f2ad2e;
 }
 
@@ -129,5 +134,14 @@ iframe{
 
 .review {
   color: #fff;
+  background-color: rgb(32, 32, 32);
   padding: 5vw 5vw 0;
+  padding: 2vw;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 3vw 5vw;
+}
+
+body > div > div > div > h4 > a {
+ color: #f2ad2e; 
 }

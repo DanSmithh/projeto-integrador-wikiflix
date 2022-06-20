@@ -322,6 +322,14 @@ img {
 .left-edit > h2 {
   font-family: 3vw;
   color: var(--first-color);
+  text-align: center;
+}
+
+.msg {
+  color: #24262b;
+  font-size: medium;
+  text-align: center;
+  padding: 30px 0 0 0;
 }
 
 .right-edit {
@@ -624,6 +632,8 @@ img {
     width: 100%;
     height: auto;
   }
+
+
 
   .right-edit {
     width: 100%;

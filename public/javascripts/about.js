@@ -1,4 +1,6 @@
-let movie_id = location.pathname;
+let movie_id = location.pathname.toString().replace("/movies", "");
+
+// const idMovie = location.pathname.toString().replace("/movies", "")
 
 // fetching movie details
 fetch(`${movie_detail_http}${movie_id}?` + new URLSearchParams({
@@ -83,7 +85,7 @@ fetch(`${movie_detail_http}${movie_id}/recommendations?` + new URLSearchParams({
             i++;
         }
         container.innerHTML += `
-        <div class="movie" onclick="location.href = '/${data.results[i].id}'">
+        <div class="movie" onclick="location.href = '/movies/${data.results[i].id}'">
             <img src="${img_url}${data.results[i].backdrop_path}" alt="">
             <p class="movie-title">${data.results[i].title}</p>
         </div>

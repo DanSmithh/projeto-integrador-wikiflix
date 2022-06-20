@@ -4,8 +4,12 @@ const moviesControllers = require('../controllers/MoviesControllers')
 
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', moviesControllers.index)
+// Renderizar página de filme
+router.get('/:id', moviesControllers.index);
+
+// Salva review no banco
+router.post('/:id', moviesControllers.criarReview);
+
 
 
 

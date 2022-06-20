@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const multer = require('multer');
+var auth = require('../middleware/auth')
 const UsuariosControllers = require('../controllers/UsuariosControllers');
 const validatorCadastro = require('../middleware/formValidator')
 const { check, validationResult, body } = require('express-validator');
@@ -41,9 +42,9 @@ router.get('/login', UsuariosControllers.login);
 router.post('/login', validatorCadastro, UsuariosControllers.autenticar);
 
 // Editar usuário
-router.get('/editar/:id_hash', UsuariosControllers.form)
-router.put('/editar/:id_hash', UsuariosControllers.atualizar)
-// router.get('/back/:id_hash', UsuariosControllers.sairEdicao)
+router.get('/editar/:id_hash', auth, UsuariosControllers.form)
+router.put('/editar/:id_hash', auth, UsuariosControllers.atualizar)
+router.get('/back', auth, UsuariosControllers.sairEdicao)
 
 // Deletar usuário
 router.delete('/deletar/:id_hash', UsuariosControllers.deletar)

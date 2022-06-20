@@ -7,12 +7,8 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', auth, function (req, res, next) {
 
-  const usuario = req.cookies.usuario;
-  req.session.usuario = usuario;
-
-
-
-  res.render('catalog', { usuario });
+  
+  res.render('catalog', { usuario: req.session.usuario });
 });
 
 module.exports = router;

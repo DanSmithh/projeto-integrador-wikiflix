@@ -10,6 +10,10 @@ router.get('/:id', moviesControllers.index);
 // Salva review no banco
 router.post('/:id', moviesControllers.criarReview);
 
+// Excluir review do banco
+router.post('/:id', moviesControllers.deleteReview);
+
+
 
 
 

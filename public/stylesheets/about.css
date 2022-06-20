@@ -142,6 +142,14 @@ iframe{
   margin: 3vw 5vw;
 }
 
+.deleteReview {
+  border: none;
+  background-color: rgba(255,0,0,0.0);
+  color: #f2ad2e;
+  text-decoration: underline;
+}
+
 body > div > div > div > h4 > a {
- color: #f2ad2e; 
+  text-decoration: none;
+  color: #f2ad2e;
 }

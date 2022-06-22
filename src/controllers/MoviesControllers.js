@@ -76,7 +76,9 @@ module.exports = {
             });
   
         res.render('movie', {usuario: req.session.usuario, idMovie, reviews} );
-      }
+      },
+
+      
 
 
 

@@ -38,10 +38,12 @@
   opacity: 0.6;
 }
 
+.review-title,
 .trailer-container,
 .recommendations{
   color: #fff;
-  padding: 5vw 5vw 0;
+  padding-top: 5vh;
+  padding-left: 2vw;
 }
 
 .heading-about {
@@ -78,18 +80,13 @@ iframe{
 
 /* FORM-REVIEWS */
 
-.review-title {
-  color: #fff;
-  padding: 5vw 5vw 0;
-}
-
 #review-form-container {
   background-color: rgb(32, 32, 32);
   padding: 2vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 1vw 5vw;
+  margin: 3vh 5vw;
   border-top: solid 4px #f2ad2e;
 }
 
@@ -109,7 +106,7 @@ iframe{
 }
 
 .reviews {
-  padding: 5vw 5vw 0;
+  padding-top: 5vh;
   color: #fff;
 }
 
@@ -153,3 +150,46 @@ body > div > div > div > h4 > a {
   text-decoration: none;
   color: #f2ad2e;
 }
+
+
+
+ /* responsive
+@media (max-width: 767px) {
+  .movie-detail{
+    height: 100%;
+    background: rgb(24, 24, 24);
+    background: linear-gradient(90deg, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0) 100%);
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+  }
+} */
+ @media (max-width: 574px) {
+  .movie-detail{
+    width: 70%;
+    height: auto;
+    background: rgb(24, 24, 24);
+    background: linear-gradient(90deg, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0) 100%);
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+  }
+
+  #review-form-container {
+    background-color: rgb(32, 32, 32);
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-top: solid 4px #f2ad2e;
+  }
+
+  .form-group textarea {
+    margin: 2vw 0;
+}
+  
+} 

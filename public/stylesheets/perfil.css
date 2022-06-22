@@ -301,8 +301,7 @@ img {
 
 .main-edit {
   width: 100%;
-
-  background: var(--dark-color);
+  background: #111;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -414,6 +413,14 @@ img {
 .buttons {
   display: flex;
   flex-direction: row;
+}
+
+.btn-delete {
+  border: none;
+  background-color: rgba(255,0,0,0.0);
+  color: #24262b;
+  font-weight:700;
+  text-decoration: underline;
 }
 
 .delete a {

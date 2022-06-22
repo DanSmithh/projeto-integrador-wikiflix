@@ -120,62 +120,31 @@ module.exports = {
       const erros = [];
       const success = [];
 
-      const usuario = await Usuario.findOne({
-        where: {
-          id_hash: id_hash
-        }
-      })
 
-      req.session.usuario = usuario;
 
       if(senha === confirmeSenha) {
         await Usuario.update({ nome, sobrenome, email, senha: bcrypt.hashSync(senha, 12) }, {
           where: { id_hash }
         })
 
+        const usuario = await Usuario.findOne({
+          where: {
+            id_hash: id_hash
+          }
+        })
+        req.session.usuario = usuario;
+
         success.push({ msg: 'Atualizações realizadas com sucesso!' });
 
         return res.render('editar-usuario', { erros: null, success , usuario })
-      } 
-      
-      // if (senha === confirmeSenha){
-      //   const usuario = await Usuario.update({ nome, sobrenome, email, senha: bcrypt.hashSync(senha, 12) }, {
-      //     where: { id_hash }
-      //   })
 
-      //   success.push({ msg: 'Atualizações realizadas com sucesso2!' });
+      } else {
 
-      //   return res.render('editar-usuario', { erros: null, success , usuario })
-      // } else {
-      //   erros.push({ msg: 'As senhas não conferem!' });
-      //   return res.render('editar-usuario', { erros, success: null, usuario });
-      // };
-
-
-
-    } catch (erro) {
-      console.log(erro);
-    }
-  },
-
-  async sairEdicao(req, res) {
-    try {
-      const { id_hash } = req.params;
-
-      // const usuario = await Usuario.findOne({
-      //   where: {
-      //     id_hash
-      //   }
-      // })
-
-      // req.session.usuario = usuario;
-
-      // console.log(usuario)
-
-      return res.json(id_hash)
-
-      // return res.render('catalog', { usuario });
-
+        erros.push({ msg: 'As senhas não conferem!' });
+        return res.render('editar-usuario', { erros, success: null, usuario: req.session.usuario });
+        
+      }
+    
     } catch (erro) {
       console.log(erro);
     }

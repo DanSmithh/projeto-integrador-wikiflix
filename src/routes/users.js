@@ -42,15 +42,14 @@ router.get('/login', UsuariosControllers.login);
 router.post('/login', validatorCadastro, UsuariosControllers.autenticar);
 
 // Editar usuário
-router.get('/editar/:id_hash', auth, UsuariosControllers.form)
-router.put('/editar/:id_hash', auth, UsuariosControllers.atualizar)
-router.get('/back', auth, UsuariosControllers.sairEdicao)
+router.get('/editar/:id_hash', auth, UsuariosControllers.form);
+router.put('/editar/:id_hash', auth, UsuariosControllers.atualizar);
 
 // Deletar usuário
-router.delete('/deletar/:id_hash', UsuariosControllers.deletar)
+router.delete('/deletar/:id_hash', UsuariosControllers.deletar);
 
 // Deslogar usuário
-router.get('/logout', UsuariosControllers.logout)
+router.get('/logout', UsuariosControllers.logout);
 
 
 

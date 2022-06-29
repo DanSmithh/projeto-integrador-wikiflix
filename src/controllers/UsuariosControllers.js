@@ -11,8 +11,8 @@ module.exports = {
 
   async criar(req, res) {
     try {
-      const { nome, sobrenome, email, senha, confirmeSenha } = req.body;
-
+      const { nome, sobrenome, email, senha, confirmeSenha, arquivo } = req.body;
+      console.log(req.file)
       const erros = [];
       const sucess = [];
 
@@ -32,6 +32,7 @@ module.exports = {
            nome,
            sobrenome,
            email,
+           name_img: req.file.filename,
            senha: bcrypt.hashSync(senha, 12),
            id_hash: uuid_v4(),
           });
@@ -64,7 +65,7 @@ module.exports = {
       }
 
       const usuario = await Usuario.findOne({
-        attributes: ['id', 'id_hash', 'nome', 'sobrenome', 'email', 'senha'],
+        attributes: ['id', 'id_hash', 'nome', 'sobrenome', 'email', 'name_img', 'senha'],
         where: {
           email: requestUser.email
         }

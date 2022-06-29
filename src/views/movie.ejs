@@ -53,7 +53,7 @@
         </div>
 
           <% if(review.usuario_id === usuario.id){ %>
-            <form action="/movies/deletar/<%= idMovie %>">
+            <form action="/movies/<%= idMovie %>/<%= review.id %>?_method=DELETE" method="POST">
             <button class="deleteReview">Excluir meu review</button>
             </form>
             <% } %> 

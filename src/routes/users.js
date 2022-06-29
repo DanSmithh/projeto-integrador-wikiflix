@@ -5,22 +5,8 @@ var auth = require('../middleware/auth')
 const UsuariosControllers = require('../controllers/UsuariosControllers');
 const validatorCadastro = require('../middleware/formValidator')
 const { check, validationResult, body } = require('express-validator');
+const uploadUser = require('../middleware/uploadImage')
 
-
-const storage = multer.diskStorage({
-  destination(req, file, callback) {
-    callback(null, 'public/images/uploads');
-  },
-
-  filename(req, file, callback) {
-    const [filename, extension] = file.originalname.split('.');
-    callback(null, filename + '-' + Date.now() + '.' + extension);
-  }
-});
-
-const upload = multer({ storage });
-
-// Catalogo
 
 // Criação  de Usuarios
 router.post('/cadastrar', [
@@ -33,7 +19,7 @@ router.post('/cadastrar', [
   check('senha')
     .notEmpty().withMessage('Campo senha é obrigatório').bail()
     .isLength({ min: 3 }).withMessage('Campo senha precisa ter mais que 3 caracteres!')
-], upload.single('arquivo'), UsuariosControllers.criar);
+], uploadUser.single('arquivo'), UsuariosControllers.criar);
 
 
 

@@ -6,6 +6,7 @@ var logger = require('morgan');
 var methodOverride = require('method-override');
 var session = require('express-session');
 
+
 var indexRouter = require('./src/routes/index');
 var usersRouter = require('./src/routes/users');
 var catalogRouter = require('./src/routes/catalog');

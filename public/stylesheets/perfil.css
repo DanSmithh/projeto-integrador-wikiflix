@@ -355,6 +355,16 @@ img {
   margin: 0;
 }
 
+.img-container {
+  border: solid 5px #2c2720;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin-top: 4vh;
+  background-size: 100%;
+  box-shadow: 9px 5px 7px hsl(0deg 0% 0% / 34%)
+}
+
 .textfield {
   width: 100%;
   flex-direction: row;

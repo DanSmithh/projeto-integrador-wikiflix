@@ -11,7 +11,7 @@ router.get('/:id', moviesControllers.index);
 router.post('/:id', moviesControllers.criarReview);
 
 // Excluir review do banco
-router.post('/:id', moviesControllers.deleteReview);
+router.delete('/:idMovie/:idReview', moviesControllers.deleteReview);
 
 
 

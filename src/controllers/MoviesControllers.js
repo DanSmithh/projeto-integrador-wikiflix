@@ -1,10 +1,5 @@
 const { Usuario, Review } = require('../models/');
 
-
-
-
-
-
 module.exports = {
 
   // Renderiza a página dobre o filme

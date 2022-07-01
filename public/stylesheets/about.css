@@ -90,10 +90,6 @@ iframe{
   border-top: solid 4px #f2ad2e;
 }
 
-/* #review-form p {
-  color
-} */
-
 #review-form textarea {
   width: 50%;
   margin: 2vw 0;
@@ -154,17 +150,6 @@ body > div > div > div > h4 > a {
 
 
  /* responsive
-@media (max-width: 767px) {
-  .movie-detail{
-    height: 100%;
-    background: rgb(24, 24, 24);
-    background: linear-gradient(90deg, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0) 100%);
-    padding: 5vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: #fff;
-  }
 } */
  @media (max-width: 574px) {
   .movie-detail{

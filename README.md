@@ -6,6 +6,8 @@
 
 Projeto de uma aplicação desenvolvida utilizando todas tecnologias abordadas Curso de desenvolvimento Web Full Stack NodeJS
 
+[Apresentação do projeto](https://www.linkedin.com/feed/update/urn:li:activity:6948498578591903744)
+
 ## Tecnologias/Bibliotecas :rocket:
 
 * Front-end

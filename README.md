@@ -1,7 +1,7 @@
 # Wikiflix :movie_camera:
 
 <p align="center">
-  <img width="470" src="public/images/logo.png">
+  <img width="470" src="wikiflix-project/public/images/logo.png">
 </p>
 
 Projeto de uma aplicação desenvolvida utilizando todas tecnologias abordadas Curso de desenvolvimento Web Full Stack NodeJS
